@@ -1,0 +1,60 @@
+/*********** Generic Rules **********/
+:root {
+    --font-body: "Times New Roman", Helvetica, sans-serif;
+    --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    /* colors */
+    --primary-color: #000000;
+    --secondary-color: #ffffff;
+    --tertiary-color: #a4b8c4;
+    --light-grey: #adafc5;
+    --dark-grey: #0c2040;
+  
+    /* sizes */
+    --font-base: 18px;
+    --small-font: 0.8em;
+    --large-font: 1.2em;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--font-base);
+    color: var(--dark-grey);
+  }
+  img {
+    max-width: 100%;
+  }
+
+/************* For Header ************/
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .logo img {
+    width: 140px;
+    height: 140px;
+  }
+
+  header a {
+    text-decoration: none;
+    color: var(--font-body);
+    font-family: var(--font-headline);
+    font-size: 24px;
+  }
+
+  header a:hover {
+    text-decoration: underline;
+  }
+  
+  header ul {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    align-items: center;
+    margin: 25px;
+  }
