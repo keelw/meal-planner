@@ -7,7 +7,7 @@
     --secondary-color: #ffffff;
     --tertiary-color: #a4b8c4;
     --light-grey: #adafc5;
-    --dark-grey: #0c2040;
+    --dark-blue: #0c2040;
   
     /* sizes */
     --font-base: 18px;
@@ -58,3 +58,26 @@
     align-items: center;
     margin: 25px;
   }
+
+/************* For Hero ************/
+  .hero {
+    color: white;
+    font-family: Arial Narrow Bold;
+    background-color: var(--dark-blue);
+    padding: 45px;
+  }
+
+/************ For Form ************/
+#meal-picker {
+    display: flex;
+    flex-direction: column;
+}
+
+#meal-picker > * {
+    margin: 20px;
+}
+
+#meal-picker button {
+    width: 200px;
+    margin: 20px
+}
