@@ -22,7 +22,7 @@ devDependencies:
     version: 3.2.5
   vite:
     specifier: ^5.0.12
-    version: 5.1.12
+    version: 5.1.1
 
 packages:
 
