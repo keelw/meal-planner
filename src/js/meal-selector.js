@@ -19,10 +19,6 @@ async function selectorOptionsTemplate() {
         for (let i = 0; i < areas.meals.length; i++) {
             areaOptions += `<option value="${areas.meals[i].strArea}" required>${areas.meals[i].strArea}</option>`;
         }
-
-    
-        console.log(categories.meals[0].strCategory);
-        console.log(areas.meals[0].strArea);
     
         renderWithTemplate(categoryOptions, category);
         renderWithTemplate(areaOptions, area);
@@ -30,6 +26,11 @@ async function selectorOptionsTemplate() {
     } catch (error) {
         console.error('Error:', error);
     }
+}
+
+export async function createList(category, area) {
+    console.log(category);
+    console.log(area);
 }
 
 selectorOptionsTemplate();
