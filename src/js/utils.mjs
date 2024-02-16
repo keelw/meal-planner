@@ -55,3 +55,37 @@ export function renderWithTemplate(template, parent, data, callback) {
     }
   }
 
+  export async function getAreas() {
+    const url="https://www.themealdb.com/api/json/v1/1/list.php?a=list"
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("There was a problem with the fetch operation.");
+        return null;
+    }
+}
+
+export async function getCategories() {
+    const url="https://www.themealdb.com/api/json/v1/1/list.php?c=list"
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("There was a problem with the fetch operation.");
+        return null;
+    }
+}
+
