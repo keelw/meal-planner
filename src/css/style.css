@@ -1,6 +1,6 @@
 /*********** Generic Rules **********/
 :root {
-    --font-body: "Times New Roman", Helvetica, sans-serif;
+    --font-body: "Montserrat", "Roboto", sans-serif;
     --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
     /* colors */
     --primary-color: #000000;
@@ -22,9 +22,36 @@
     font-family: var(--font-body);
     font-size: var(--font-base);
     color: var(--dark-grey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+
+  html {
+    background-color: var(--tertiary-color);
+  }
+
+  .site-inner {
+    max-width: 750px;
+    background-color: white;
+    margin: auto;
+    border: solid 3px var(--light-grey);
+    border-radius: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
   img {
     max-width: 100%;
+  }
+  h1 {
+    margin-left: 10px;
+  }
+
+  .divider {
+    width: 100%;
+    margin: 0;
   }
 
 /************* For Header ************/
@@ -32,6 +59,11 @@
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
+    background-color: var(--secondary-color);
+    width: 100%;
+    margin: 0;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
   }
 
   .logo img {
@@ -48,6 +80,11 @@
 
   header a:hover {
     text-decoration: underline;
+  }
+
+  header a:active {
+    background-color: black;
+    color: white;
   }
   
   header ul {
@@ -67,6 +104,20 @@
     padding: 45px;
   }
 
+  .hero h1 {
+    position: relative;
+    animation-name: title-dance;
+    animation-duration: 4s;
+  }
+
+  @keyframes title-dance {
+    0% {left:0px; top:0px}
+    25% {left: 50px;}
+    50% {left: 100px;}
+    75% {left: 50px;}
+    100% {left:0px;}
+  }
+
 /************ For Form ************/
 #meal-picker {
     display: flex;
@@ -79,5 +130,231 @@
 
 #meal-picker button {
     width: 200px;
-    margin: 20px
+    margin: 20px;
+    padding: 10px;
+    
+}
+
+#meal-picker select {
+  background-color: white;
+  width: 250px;
+  padding: 10px;
+}
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+
+/*********** For Banner ***********/
+.banner {
+  display: none;
+}
+
+.banner.show {
+  display: block;
+  background-color: var(--tertiary-color);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+/********** For Recipe List **********/
+.recipe-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.recipe-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.recipe-card h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+}
+
+.recipe-card a {
+  text-decoration: none;
+  color: #333;
+}
+
+.recipe-card button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--tertiary-color);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.recipe-card button:hover {
+  background-color: green;
+}
+
+.meal-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: var(--dark-blue);
+}
+
+.meal-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.meal-card h3 {
+  font-size: 18px;
+  margin: 0;
+  color: white;
+}
+
+.meal-card a {
+  text-decoration: none;
+  color: white;
+}
+
+.meal-card button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.favorite-meals:hover {
+  background-color: gold;
+}
+
+.remove-meals:hover, .remove-favorites:hover {
+  background-color: red;
+}
+
+.notice {
+  font-size: 14px;
+  color: #888;
+  text-align: center;
+}
+
+/************ For Recipe Pages ************/
+#recipe-pages {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+#recipe {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#recipe img {
+  max-width: 100%;
+  height: auto;
+  margin: 20px;
+  border-radius: 8px;
+  align-self: center;
+}
+
+#recipe a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+#recipe table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+#recipe th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#recipe th {
+  background-color: #f2f2f2;
+}
+
+#recipe pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+#favorite-header {
+  animation: rainbow 2.5s infinite linear;
+}
+
+@keyframes rainbow{
+  100%,0%{
+    color: rgb(255,0,0);
+  }
+  8%{
+    color: rgb(255,127,0);
+  }
+  16%{
+    color: rgb(255,255,0);
+  }
+  25%{
+    color: rgb(127,255,0);
+  }
+  33%{
+    color: rgb(0,255,0);
+  }
+  41%{
+    color: rgb(0,255,127);
+  }
+  50%{
+    color: rgb(0,255,255);
+  }
+  58%{
+    color: rgb(0,127,255);
+  }
+  66%{
+    color: rgb(0,0,255);
+  }
+  75%{
+    color: rgb(127,0,255);
+  }
+  83%{
+    color: rgb(255,0,255);
+  }
+  91%{
+    color: rgb(255,0,127);
+  }
 }

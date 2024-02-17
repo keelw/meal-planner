@@ -6,19 +6,19 @@
     <title>Meal Planner | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
-  <body>
-    <header class="divider">
-      <div class="logo">
-        <a href="index.html"><img src="images/Optimized-site-logo.jpg" alt="Personal Logo: WK" /></a>
-      </div>
-      <ul>
-        <li><a href="index.html"> Meal<span class="highlight"> Planner</span></a></li>
-        <li><a href="shoppinglist.html"> Shopping<span class="highlight"> List</span></a></li>
-      </ul>
+  <body class="site-inner">
+    <header id="header">
+
     </header>
+    <div class="banner">
+      <p>
+        Welcome! This meal planner app will help you get creative ideas for new meals, 
+        add them to a plan, provide you the recipes, create your shopping list and more!
+      </p>
+    </div>
     <main class="divider">
       <div class="hero">
-        <h1>Recipe Picker</h1>
+        <h1>Recipe Helper</h1>
         <form id="meal-picker">
           <label for="category">Select a category:</label>
           <select id="category" name="category">
@@ -29,13 +29,21 @@
           <select id="area" name="area">
 
           </select>
-          <button type="submit" value="submit">Get Meal Ideas</button>
+          <button id="get-meals" type="submit" value="submit">Get Meal Ideas</button>
         </form>
       </div>
-      <div id="ideas">
-        <h1>Meal Ideas</h1>
+      <div id="recipe-list">
+
+      </div>
+      </div>
+      <div id="meal-plan">
+
       </div>
     </main>
-    <footer>&copy;2023 NOT a real business</footer>
+    <footer id="footer">
+
+    </footer>
+  <script src="js/main.js" type="module"></script>
+  <script src="js/meal-selector.js" type="module"></script>
   </body>
 </html>
