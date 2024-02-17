@@ -1,5 +1,6 @@
 import { loadHeaderFooter } from "./utils.mjs";
 import { createList, addToMealPlan, createMealPlan, removeFromMealPlan } from "./meal-selector";
+import { addToFavorites } from "./favorites.mjs";
 
 const form = document.getElementById("meal-picker");
 
@@ -31,6 +32,14 @@ document.addEventListener('click', async function(event) {
     }
 })
 
+document.addEventListener('click', async function(event) {
+    if (event.target.classList.contains('favorite-meals')) {
+        const idElement = event.target.previousElementSibling.previousElementSibling;
+        const mealID = idElement.textContent;
+        await addToFavorites(mealID);
+    }
+})
+
 function DisplayBanner() {
     let visit = parseInt(localStorage.getItem("visit"));
     if (!visit) {
@@ -41,5 +50,4 @@ function DisplayBanner() {
   }
 
 createMealPlan();
-loadHeaderFooter();
 DisplayBanner();
