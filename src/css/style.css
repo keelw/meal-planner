@@ -102,3 +102,14 @@
 }
 
 
+/*********** For Banner ***********/
+.banner {
+  display: none;
+}
+
+.banner.show {
+  display: block;
+  background-color: var(--tertiary-color);
+  padding: 1.5rem;
+  text-align: center;
+}

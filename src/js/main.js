@@ -2,8 +2,6 @@ import { loadHeaderFooter } from "./utils.mjs";
 import { createList, addToMealPlan, createMealPlan, removeFromMealPlan } from "./meal-selector";
 
 const form = document.getElementById("meal-picker");
-createMealPlan();
-loadHeaderFooter();
 
 form.addEventListener('submit', async function(event) {
     event.preventDefault();
@@ -32,3 +30,16 @@ document.addEventListener('click', async function(event) {
         await createMealPlan();
     }
 })
+
+function DisplayBanner() {
+    let visit = parseInt(localStorage.getItem("visit"));
+    if (!visit) {
+      document.querySelector(".banner").classList.add("show");
+      visit = 0;
+    }
+    localStorage.setItem("visit", visit + 1);
+  }
+
+createMealPlan();
+loadHeaderFooter();
+DisplayBanner();
