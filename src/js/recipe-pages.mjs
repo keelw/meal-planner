@@ -8,9 +8,9 @@ async function recipePageTemplate() {
     const meal = await getMealById(mealID);
     const recipe = `<h1>${meal.meals[0].strMeal}</h1> 
                     <img src="${meal.meals[0].strMealThumb}" alt="Image of ${meal.meals[0].strMeal}">
-                    <a href="${meal.meals[0].strYoutube}" alt="YouTube Link">Youtube Video</a>
-                    <h3 id="category">${meal.meals[0].strCategory}</h3>
-                    <h3 id="area">${meal.meals[0].strArea}</h3>
+                    <a href="${meal.meals[0].strYoutube}" alt="YouTube Link">Watch YouTube Video</a>
+                    <h3 id="category">Category: ${meal.meals[0].strCategory}</h3>
+                    <h3 id="area">Origin: ${meal.meals[0].strArea}</h3>
                     <table id="ingredients">
                     <tr>
                         <th>Ingredients</th>

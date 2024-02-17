@@ -107,6 +107,7 @@ export async function createMealPlan() {
                 </a>
                 <span class="mealID" hidden>${meal.meals[0].idMeal}</span>
                 <button class="remove-meals" type="submit" value="submit">Remove From Meal Plan</button>
+                <button class="favorite-meals" type="submit" value="submit">Favorite this Meal</button>
                 </div>`
             }
 
