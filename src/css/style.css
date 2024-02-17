@@ -291,7 +291,7 @@
 }
 
 #recipe a {
-  color: #007bff;
+  color: var(--dark-blue);
   text-decoration: none;
 }
 
