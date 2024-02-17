@@ -89,3 +89,32 @@ export async function getCategories() {
     }
 }
 
+export async function getRecipesByAreaAndCategory(area, category) {
+    // Fetch meals by area
+    const areaResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+    if (!areaResponse.ok) {
+        throw new Error('Network response was not ok.');
+    }
+    const areaData = await areaResponse.json();
+    const mealsByArea = areaData.meals || [];
+
+    // Fetch details for all meals
+    const mealDetailsPromises = mealsByArea.map(async meal => {
+        const mealResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`);
+        if (!mealResponse.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        return mealResponse.json();
+    });
+
+    // Wait for all details to be fetched
+    const mealDetails = await Promise.all(mealDetailsPromises);
+
+    // Filter meals by category
+    const filteredMeals = mealDetails.filter(mealData => {
+        const mealCategory = mealData.meals[0].strCategory;
+        return mealCategory === category;
+    });
+
+    return filteredMeals;
+}

@@ -1,4 +1,4 @@
-import { getCategories, getAreas, renderWithTemplate } from './utils.mjs';
+import { getCategories, getAreas, renderWithTemplate, getRecipesByAreaAndCategory } from './utils.mjs';
 
 // populate the selectors
 async function selectorOptionsTemplate() {
@@ -28,9 +28,33 @@ async function selectorOptionsTemplate() {
     }
 }
 
-export async function createList(category, area) {
-    console.log(category);
-    console.log(area);
+export async function createList(area, category) {
+    const recipes = await getRecipesByAreaAndCategory(area, category);
+    const recipeList = document.getElementById("recipe-list");
+    let listItems = ``;
+    
+    // Clear the element when initially called
+    recipeList.innerHTML='';
+
+    try {
+        if (recipes.length == 0) {
+            listItems = `<p class="notice">Sorry, no recipes match your search parameters.</p>`
+        } else {
+            for (let i = 0; i < recipes.length && i <= 10; i++) {
+                listItems += `<div class="recipe-card">
+                <a href="recipe_pages/index.html?recipe=${recipes[i].meals[0].idMeal}">
+                <img src="${recipes[i].meals[0].strMealThumb}" alt="Image of ${recipes[i].meals[0].strMeal}">
+                <h3>${recipes[i].meals[0].strMeal}</h3>
+                </a>
+                <span class="mealID" hidden>${recipes[i].meals[0].idMeal}</span>
+                <button class="add-meals" type="submit" value="submit">Add To Meal Plan</button>
+            </div>`;
+            }    
+        }
+        renderWithTemplate(listItems, recipeList);
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
 selectorOptionsTemplate();
