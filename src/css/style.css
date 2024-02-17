@@ -260,7 +260,7 @@
 
 .notice {
   font-size: 14px;
-  color: #888;
+  color: var(--primary-color);
   text-align: center;
 }
 
