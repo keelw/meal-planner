@@ -118,3 +118,18 @@ export async function getRecipesByAreaAndCategory(area, category) {
 
     return filteredMeals;
 }
+
+export async function getMealById(mealID) {
+    try {
+        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("There was a problem with the fetch operation.");
+        return null;
+    }
+}
