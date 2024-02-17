@@ -1,24 +1,34 @@
 import { loadHeaderFooter } from "./utils.mjs";
-import { createList } from "./meal-selector";
+import { createList, addToMealPlan, createMealPlan, removeFromMealPlan } from "./meal-selector";
 
 const form = document.getElementById("meal-picker");
-const addMealsButtons = document.querySelectorAll(".add-meals");
+createMealPlan();
+loadHeaderFooter();
 
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const categoryValue = document.getElementById("category").value;
     const areaValue = document.getElementById("area").value;
 
-    createList(areaValue, categoryValue)
+    await createList(areaValue, categoryValue);
 });
 
-addMealsButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const idElement = button.previousElementSibling;
+// Event delegation for dynamically created buttons
+document.addEventListener('click', async function(event) {
+    if (event.target.classList.contains('add-meals')) {
+        const idElement = event.target.previousElementSibling;
         const mealID = idElement.textContent;
-        console.log(mealID);
-    })
+        await addToMealPlan(mealID);
+        await createMealPlan();
+    }
 })
 
-loadHeaderFooter();
+document.addEventListener('click', async function(event) {
+    if (event.target.classList.contains('remove-meals')) {
+        const idElement = event.target.previousElementSibling;
+        const mealID = idElement.textContent;
+        await removeFromMealPlan(mealID);
+        await createMealPlan();
+    }
+})
